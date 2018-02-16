@@ -1,19 +1,19 @@
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-8,23,38,52 * * * *     sudo -u www-data php /var/www/html/app/console mautic:segments:update > /var/log/cron.pipe 2>&1
-       */5 * * * *     sudo -u www-data php /var/www/html/app/console mautic:import > /var/log/cron.pipe 2>&1
-5,20,35,50 * * * *     sudo -u www-data php /var/www/html/app/console mautic:campaigns:rebuild > /var/log/cron.pipe 2>&1
-2,17,32,47 * * * *     sudo -u www-data php /var/www/html/app/console mautic:campaigns:trigger > /var/log/cron.pipe 2>&1
-0,15,30,45 * * * *     sudo -u www-data php /var/www/html/app/console mautic:messages:send > /var/log/cron.pipe 2>&1
-0,15,30,45 * * * *     sudo -u www-data php /var/www/html/app/console mautic:emails:send > /var/log/cron.pipe 2>&1
-0,15,30,45 * * * *     sudo -u www-data php /var/www/html/app/console mautic:email:fetch > /var/log/cron.pipe 2>&1
-0,15,30,45 * * * *     sudo -u www-data php /var/www/html/app/console mautic:social:monitoring > /var/log/cron.pipe 2>&1
-0,15,30,45 * * * *     sudo -u www-data php /var/www/html/app/console mautic:webhooks:process > /var/log/cron.pipe 2>&1
-0,15,30,45 * * * *     sudo -u www-data php /var/www/html/app/console mautic:broadcasts:send > /var/log/cron.pipe 2>&1
-         * 1 * * *     sudo -u www-data php /var/www/html/app/console mautic:maintenance:cleanup --days-old=365 > /var/log/cron.pipe 2>&1
-        0 4 15 * *     sudo -u www-data php /var/www/html/app/console mautic:iplookup:download > /var/log/cron.pipe 2>&1
-       */5 * * * *     sudo -u www-data php /var/www/html/app/console mautic:reports:scheduler > /var/log/cron.pipe 2>&1
+8,23,38,52 * * * *     php /var/www/html/app/console mautic:segments:update
+       */5 * * * *     php /var/www/html/app/console mautic:import
+5,20,35,50 * * * *     php /var/www/html/app/console mautic:campaigns:rebuild
+2,17,32,47 * * * *     php /var/www/html/app/console mautic:campaigns:trigger
+0,15,30,45 * * * *     php /var/www/html/app/console mautic:messages:send
+0,15,30,45 * * * *     php /var/www/html/app/console mautic:emails:send
+0,15,30,45 * * * *     php /var/www/html/app/console mautic:email:fetch
+0,15,30,45 * * * *     php /var/www/html/app/console mautic:social:monitoring
+0,15,30,45 * * * *     php /var/www/html/app/console mautic:webhooks:process
+0,15,30,45 * * * *     php /var/www/html/app/console mautic:broadcasts:send
+         * 1 * * *     php /var/www/html/app/console mautic:maintenance:cleanup --days-old=365
+        0 4 15 * *     php /var/www/html/app/console mautic:iplookup:download
+       */5 * * * *     php /var/www/html/app/console mautic:reports:scheduler
 
 # download geoip db on start if it does not exist
-@reboot                sudo -u www-data [[ "$(ls -A /var/www/html/app/cache/ip_data 2>/dev/null)" ]] || php /var/www/html/app/console mautic:iplookup:download > /var/log/cron.pipe 2>&1
+@reboot                [[ "$(ls -A /var/www/html/app/cache/ip_data 2>/dev/null)" ]] || php /var/www/html/app/console mautic:iplookup:download
