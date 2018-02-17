@@ -3,7 +3,7 @@
 5,20,35,50 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:campaigns:rebuild --no-interaction --no-ansi >> /var/log/mautic-campaigns-rebuilds.log 2>&1
 2,17,32,47 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:campaigns:trigger --no-interaction --no-ansi >> /var/log/mautic-campaigns-trigger.log 2>&1
 0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:messages:send --no-interaction --no-ansi >> /var/log/mautic-messages.log 2>&1
-0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:emails:send --no-interaction --no-ansi >> /var/log/mautic-emails-send.log 2>&1
+    1-59/2 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:emails:send --no-interaction --no-ansi >> /var/log/mautic-emails-send.log 2>&1
 0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:email:fetch --no-interaction --no-ansi >> /var/log/mautit-emails-fetch.log 2>&1
 0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:social:monitoring --no-interaction --no-ansi >> /var/log/mautic-social.log 2>&1
 0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:webhooks:process --no-interaction --no-ansi >> /var/log/mautic-webhooks.log 2>&1
