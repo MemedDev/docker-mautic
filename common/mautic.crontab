@@ -1,13 +1,13 @@
-8,23,38,52 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:segments:update >> /var/log/cron.log 2>&1
-       */5 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:import >> /var/log/cron.log 2>&1
-5,20,35,50 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:campaigns:rebuild >> /var/log/cron.log 2>&1
-2,17,32,47 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:campaigns:trigger >> /var/log/cron.log 2>&1
-0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:messages:send >> /var/log/cron.log 2>&1
-0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:emails:send >> /var/log/cron.log 2>&1
-0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:email:fetch >> /var/log/cron.log 2>&1
-0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:social:monitoring >> /var/log/cron.log 2>&1
-0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:webhooks:process >> /var/log/cron.log 2>&1
-0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:broadcasts:send >> /var/log/cron.log 2>&1
-         * 1 * * *     /usr/local/bin/php /var/www/html/app/console mautic:maintenance:cleanup --days-old=365 >> /var/log/cron.log 2>&1
-        0 4 15 * *     /usr/local/bin/php /var/www/html/app/console mautic:iplookup:download >> /var/log/cron.log 2>&1
-       */5 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:reports:scheduler >> /var/log/cron.log 2>&1
+8,23,38,52 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:segments:update --no-interaction --no-ansi >> /var/log/mautic-segments.log 2>&1
+       */5 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:import --no-interaction --no-ansi >> /var/log/mautic-imports.log 2>&1
+5,20,35,50 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:campaigns:rebuild --no-interaction --no-ansi >> /var/log/mautic-campaigns-rebuilds.log 2>&1
+2,17,32,47 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:campaigns:trigger --no-interaction --no-ansi >> /var/log/mautic-campaigns-trigger.log 2>&1
+0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:messages:send --no-interaction --no-ansi >> /var/log/mautic-messages.log 2>&1
+0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:emails:send --no-interaction --no-ansi >> /var/log/mautic-emails-send.log 2>&1
+0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:email:fetch --no-interaction --no-ansi >> /var/log/mautit-emails-fetch.log 2>&1
+0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:social:monitoring --no-interaction --no-ansi >> /var/log/mautic-social.log 2>&1
+0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:webhooks:process --no-interaction --no-ansi >> /var/log/mautic-webhooks.log 2>&1
+0,15,30,45 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:broadcasts:send --no-interaction --no-ansi >> /var/log/mautic-breadcast.log 2>&1
+         * 1 * * *     /usr/local/bin/php /var/www/html/app/console mautic:maintenance:cleanup --no-interaction --no-ansi --days-old=365 >> /var/log/mautic-maintenance.log 2>&1
+        0 4 15 * *     /usr/local/bin/php /var/www/html/app/console mautic:iplookup:download --no-interaction --no-ansi >> /var/log/mautic-iplookup.log 2>&1
+       */5 * * * *     /usr/local/bin/php /var/www/html/app/console mautic:reports:scheduler --no-interaction --no-ansi >> /var/log/mautic-reports.log 2>&1
